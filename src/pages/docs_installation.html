@@ -1,37 +1,57 @@
 <div class="section">
   <h2><a href="/docs/">Docs</a> : Installation</h2>
 
-  <h3>Create an admin account</h3>
-  <p>First, you need to <a href="https://v1.userbase.com/#create-admin">create a free Userbase admin account</a>. No credit card required.</p>
+  <h3>Create a new user account</h3>
 
-  <h3>Install the SDK</h3>
-  <p>Then, you need to include the Userbase SDK in your web app.</p>
-  <p>You can either include the SDK with a <code class="language-markup">&lt;script&gt;</code> tag:</p>
+  <h4>Building using Docker and docker-compose</h4>
+
+  <p>We provide an easier way to build and run noebs using Docker.</p>
+  <p>Fork this repository (e.g., git clone https://github.com/adonese/noebs)
+    cd to noebs root directory (E.g., $HOME/src/noebs)</p>
+  <pre>
+      <code class="language-bash">
+        $ git clone https://github.com/adonese/noebs
+        $ cd noebs
+        $ docker build -t noebs . # -t for giving it a name
+        $ docker run -it -p 8000:8000 noebs:latest
+        # Open localhost:8000/test in your browser to interact with noebs
+      </code>
+    </pre>
+
+  <h4>Building with go get command [not recommended]</h4>
+
+  <p>This is only useful if you plan on contributing to noebs itself. Use docker instead!</p>
+  make sure you have Go installed <a href="https://golang.org">(go website to see various ways to install go)</a>.
 
   <pre>
-    <code class="language-markup"><!--
-    <script type="text/javascript" src="https://sdk.userbase.com/1/userbase.js"></script>
-    --></code>
-  </pre>
-
-  <p>Or, you can use the npm package:</p>
-
-  <pre>
-    <code class="language-bash">
-    npm install userbase-js
+  <code class="language-bash">
+    # this command may likely takes along time depending on your internet connections.
+    # also, make sure you are using a vpn since some of the libraries are hosted in GCE hosting which forbids Sudan
+    $ go get github.com/adonese/noebs
+    $ cd $GOPATH/github.com/adonese/noebs
+    $ go build .
     </code>
   </pre>
+  <p>You will have a binary that after running it will spawn a production ready server!</p>
 
-  <h3>Set the App ID</h3>
-  <p>In your admin account, you will find a Trial app. Get its App ID, and initialize the Userbase SDK with it.</p>
 
-  <pre>
-    <code class="language-javascript"><!--
-    userbase.init({ appId: 'YOUR_APP_ID' })
-    --></code>
-  </pre>
 
-  <p>And you're all set. You can now proceed to the <a href="/docs/sdk/">SDK</a> section, or jump straight to the <a href="/docs/quickstart/">Quickstart</a> to see how to build a very basic web app in a single HTML file.</p>
+  <h3>Notes on installation</h3>
+
+  <p>noebs needs to be connected with EBS merchant/consumer server in order to get useful responses. However, you can run our embedded server that mocks EBS responses in cases where you cannot reach EBS server. To do that, you need to enable the development mode using a special env var, EBS_LOCAL_DEV. You need to set EBS_LOCAL_DEV=1 in order to use the mocking functionality.
+  </p>
+
+  <h4>Using Docker</h4>
+
+  <pre><code class="language-bash">
+    $ docker run -it -p 8000:8000 -e EBS_LOCAL_DEV=1 noebs:latest
+    $ export EBS_LOCAL_DEV=1 noebs
+    </code></pre>
+
+  <span class="highlight">This method has been DEPRECATED.</span>
+
+
+  <p>And you're all set. You can now proceed to the <a href="/docs/sdk/">API docs</a> section, or jump straight to the <a href="/docs/quickstart/">Quickstart</a> to see how to make a simple payment integration.</p>
 </div>
 
 <hr>
