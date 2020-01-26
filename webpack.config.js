@@ -86,24 +86,24 @@ module.exports = (env, argv) => {
       ...pages,
       new FaviconsWebpackPlugin('./src/img/icon.png'),
       new SocialTags({
-        appUrl: 'https://userbase.com/',
+        appUrl: 'https://noebs.dev/',
         facebook: {
-          'og:url': "https://userbase.com",
+          'og:url': "https://noebs.dev",
           'og:type': "website",
-          'og:title': "Userbase",
-          'og:image': './src/img/og_card.png',
-          'og:description': "The easiest way to add user accounts & persistence to your static site.",
-          'og:site_name': "Userbase",
+          'og:title': "noebs",
+          'og:image': './src/img/og_card.jpg',
+          'og:description': "The easiest and most secure payment integration in Sudan. Start for free and enjoy our seamless payment functionalities!",
+          'og:site_name': "noebs",
           'og:locale': "en_US"
         },
         twitter: {
           "twitter:card": "summary_large_image",
-          "twitter:site": "@UserbaseHQ",
-          "twitter:creator": "@UserbaseHQ",
-          "twitter:url": "https://userbase.com",
-          "twitter:title": "Userbase",
-          "twitter:description": "The easiest way to add user accounts & persistence to your static site.",
-          "twitter:image": './src/img/og_card.png'
+          "twitter:site": "@_adonese",
+          "twitter:creator": "@_adonese",
+          "twitter:url": "https://noebs.dev",
+          "twitter:title": "noebs",
+          "twitter:description": "The easiest and most secure payment integration in Sudan. Start for free and enjoy our seamless payment functionalities!",
+          "twitter:image": './src/img/og_card.jpg'
         },
       }),
       new HtmlBeautifyPlugin({
